@@ -10,6 +10,7 @@ A high-performance, GPU-accelerated terminal environment optimized for **Oracle/
 On Ubuntu, use the official repository to ensure the package is managed by `apt`.
 ```bash
 sudo apt update && sudo apt install kitty -y
+```
 
 # 🛠️ Configuration Steps
 
@@ -19,37 +20,37 @@ Follow these steps to apply the custom "Migration Dashboard" theme to your local
 Before linking your files, ensure the Kitty configuration directory exists in your home folder.
 ```bash
 mkdir -p ~/.config/kitty
+```
 
-2. Linking Dotfiles
+## 2. Linking Dotfiles
 
 Instead of copying files, use a symbolic link. This ensures that any changes you make in your GitHub repository folder are automatically applied to your system.
 
-    Note: Replace ~/projects/migration-dash-kitty with the actual path where you cloned the repository.
+> **Note:** Replace `~/projects/migration-dash-kitty` with the actual path where you cloned the repository.
 
-Bash
-
+```bash
 # Remove existing config if it exists
 rm -rf ~/.config/kitty/kitty.conf
 
 # Create the symbolic link
 ln -sf ~/projects/migration-dash-kitty/kitty.conf ~/.config/kitty/kitty.conf
+```
 
-3. Applying the Theme
+## 3. Applying the Theme
 
-If your configuration uses an external theme file (like current-theme.conf for Catppuccin), ensure it is also linked or present in the same directory.
-Bash
+If your configuration uses an external theme file (like `current-theme.conf` for Catppuccin), ensure it is also linked or present in the same directory.
 
+```bash
 ln -sf ~/projects/migration-dash-kitty/current-theme.conf ~/.config/kitty/current-theme.conf
+```
 
-4. Verification & Reload
+## 4. Verification & Reload
 
 You do not need to restart your computer or the terminal to see changes. Use Kitty's built-in reload command to refresh the UI instantly.
 
-    Focus your Kitty terminal.
-
-    Press Ctrl + Shift + F5.
-
-    If the white title bar is still visible, ensure hide_window_decorations yes is set in your config and restart the app once.
+1.  Focus your Kitty terminal.
+2.  Press `Ctrl` + `Shift` + `F5`.
+3.  If the white title bar is still visible, ensure `hide_window_decorations yes` is set in your config and restart the app once.
 
 
 ## ⌨️ Essential Keyboard Shortcuts
@@ -89,4 +90,3 @@ These mappings are optimized for a high-performance workflow, ensuring no confli
 | `Ctrl` + `Shift` + `Alt` + `Tab` | Switch to **Previous Tab** |
 | `Ctrl` + `Shift` + `F5` | **Reload Configuration** (Apply changes live) |
 | `Ctrl` + `Shift` + `F2` | **Edit kitty.conf** in default text editor |
-

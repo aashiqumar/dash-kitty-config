@@ -1,63 +1,92 @@
-🐱 Kitty Terminal Configuration
+# 🐱 Kitty Terminal Configuration
 
-<img width="1920" height="1173" alt="Screenshot from 2026-02-11 16-14-59" src="https://github.com/user-attachments/assets/46de2405-001e-435a-abe8-32f9a775ae68" />
+<img width="1920" alt="Migration Dashboard Screenshot" src="https://github.com/user-attachments/assets/46de2405-001e-435a-abe8-32f9a775ae68" />
 
+A high-performance, GPU-accelerated terminal environment optimized for **Oracle/MongoDB migrations** and full-stack development. This setup features a custom 3-pane layout, **Catppuccin Mocha** aesthetics, and frosted glass transparency.
 
-A high-performance, GPU-accelerated terminal environment optimized for Oracle/MongoDB migrations and full-stack development. This setup features a custom 3-pane layout, Catppuccin Mocha aesthetics, and frosted glass transparency.
-🚀 Installation
-1. Install Kitty
+## 🚀 Installation
 
-On Ubuntu, use the official repository to ensure the package is managed by apt.
-Bash
-
+### 1. Install Kitty
+On Ubuntu, use the official repository to ensure the package is managed by `apt`.
+```bash
 sudo apt update && sudo apt install kitty -y
 
-2. Set as Default Terminal (Optional)
+# 🛠️ Configuration Steps
 
-To make Kitty your system default:
-Bash
+Follow these steps to apply the custom "Migration Dashboard" theme to your local machine.
 
-sudo update-alternatives --config x-terminal-emulator
-
-🛠️ Configuration
-1. Apply Custom Dotfiles
-
-Link your kitty.conf from your repository to the standard Kitty configuration path.
-Bash
-
-# Create the directory if it doesn't exist
+## 1. Directory Setup
+Before linking your files, ensure the Kitty configuration directory exists in your home folder.
+```bash
 mkdir -p ~/.config/kitty
 
-# Create a symbolic link to your custom config
-ln -sf ~/path/to/your/repo/kitty.conf ~/.config/kitty/kitty.conf
+2. Linking Dotfiles
 
-2. Install Required Fonts
+Instead of copying files, use a symbolic link. This ensures that any changes you make in your GitHub repository folder are automatically applied to your system.
 
-This configuration requires Monolisa Nerd Font and Maple Mono for proper rendering and italics. Ensure these are installed in ~/.local/share/fonts.
-⌨️ Essential Keyboard Shortcuts
+    Note: Replace ~/projects/migration-dash-kitty with the actual path where you cloned the repository.
 
-These mappings are optimized to avoid conflicts with system "Paste" (Ctrl+Shift+V) and "Copy" (Ctrl+Shift+C).
-Window Management (Splits)
-Command	Action
-Ctrl + Shift + S	Split Horizontally (Pane below)
-Ctrl + Shift + D	Split Vertically (Pane to the right)
-Ctrl + Shift + Q	Close Current Pane
-Ctrl + Shift + Z	Toggle Zoom (Stack/Unstack pane)
-Navigation & Resizing
-Command	Action
-Ctrl + Shift + H/J/K/L	Move Focus (Vim-style Left/Down/Up/Right)
-Ctrl + Arrow Keys	Resize Active Pane
-Ctrl + Home	Reset All Pane Sizes
-System Commands
-Command	Action
-Ctrl + Shift + F5	Reload Config (Live update)
-Ctrl + Shift + F2	Edit Config in default editor
-📊 Dashboard Setup (Recommended Commands)
+Bash
 
-To achieve the "Command Center" look for your migration monitoring, open three panes and run:
+# Remove existing config if it exists
+rm -rf ~/.config/kitty/kitty.conf
 
-    Top Pane: Your Migration Script (python3 migrate.py).
+# Create the symbolic link
+ln -sf ~/projects/migration-dash-kitty/kitty.conf ~/.config/kitty/kitty.conf
 
-    Bottom Left: btop for system telemetry.
+3. Applying the Theme
 
-    Bottom Right: docker stats for database health monitoring.
+If your configuration uses an external theme file (like current-theme.conf for Catppuccin), ensure it is also linked or present in the same directory.
+Bash
+
+ln -sf ~/projects/migration-dash-kitty/current-theme.conf ~/.config/kitty/current-theme.conf
+
+4. Verification & Reload
+
+You do not need to restart your computer or the terminal to see changes. Use Kitty's built-in reload command to refresh the UI instantly.
+
+    Focus your Kitty terminal.
+
+    Press Ctrl + Shift + F5.
+
+    If the white title bar is still visible, ensure hide_window_decorations yes is set in your config and restart the app once.
+
+
+## ⌨️ Essential Keyboard Shortcuts
+
+These mappings are optimized for a high-performance workflow, ensuring no conflicts with standard system commands like **Copy** (`Ctrl+Shift+C`) and **Paste** (`Ctrl+Shift+V`).
+
+### 🪟 Window & Pane Management (Splits)
+| Shortcut | Action |
+| :--- | :--- |
+| `Ctrl` + `Shift` + `S` | **Horizontal Split** (Create pane below) |
+| `Ctrl` + `Shift` + `D` | **Vertical Split** (Create pane to the right) |
+| `Ctrl` + `Shift` + `Enter` | **Quick Horizontal Split** (Follows current path) |
+| `Ctrl` + `Shift` + `Q` | **Close Focused Pane** (Terminates current session) |
+| `Ctrl` + `Shift` + `Z` | **Toggle Zoom** (Maximize active pane to full screen) |
+
+### 🎯 Navigation & Focus
+| Shortcut | Action |
+| :--- | :--- |
+| `Ctrl` + `Shift` + `H` | Move focus to the **Left** pane |
+| `Ctrl` + `Shift` + `L` | Move focus to the **Right** pane |
+| `Ctrl` + `Shift` + `K` | Move focus to the **Upper** pane |
+| `Ctrl` + `Shift` + `J` | Move focus to the **Lower** pane |
+
+### 📏 Resizing Panes
+| Shortcut | Action |
+| :--- | :--- |
+| `Ctrl` + `Left Arrow` | Make focused pane **Narrower** |
+| `Ctrl` + `Right Arrow` | Make focused pane **Wider** |
+| `Ctrl` + `Up Arrow` | Make focused pane **Taller** |
+| `Ctrl` + `Down Arrow` | Make focused pane **Shorter** |
+| `Ctrl` + `Home` | **Reset** all panes to equal size |
+
+### ⚙️ System & Tabs
+| Shortcut | Action |
+| :--- | :--- |
+| `Ctrl` + `Alt` + `Tab` | Switch to **Next Tab** |
+| `Ctrl` + `Shift` + `Alt` + `Tab` | Switch to **Previous Tab** |
+| `Ctrl` + `Shift` + `F5` | **Reload Configuration** (Apply changes live) |
+| `Ctrl` + `Shift` + `F2` | **Edit kitty.conf** in default text editor |
+
